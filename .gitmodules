@@ -1,0 +1,3 @@
+[submodule "src/compose-spec"]
+	path = src/compose-spec
+	url = git@github.com:compose-spec/compose-spec.git

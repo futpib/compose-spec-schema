@@ -1,0 +1,80 @@
+{
+  "name": "compose-spec-schema",
+  "version": "1.0.0",
+  "description": "TypeScript type and JSON schema for `docker-compose.yml`",
+  "author": "futpib <futpib@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/futpib/compose-spec-schema",
+  "keywords": [
+    "docker",
+    "docker-compose",
+    "compose-spec",
+    "schema",
+    "json-schema",
+    "typescript"
+  ],
+  "nodemonConfig": {
+    "ext": "ts,tsx"
+  },
+  "scripts": {
+    "build": "yarn ts-node ./src/scripts/json-to-typescript && tsc",
+    "test": "xo && nyc ava",
+    "prepare": "husky install || true",
+    "prepublish": "yarn build"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@ava/typescript": "^2.0.0",
+    "@types/invariant": "^2.2.35",
+    "@types/node": "^16.11.6",
+    "@types/sinon": "^10.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "ava": "^3.15.0",
+    "eslint-config-xo": "^0.39.0",
+    "eslint-config-xo-overrides": "^1.5.0",
+    "eslint-config-xo-typescript": "^0.47.1",
+    "husky": "^6.0.0",
+    "invariant": "^2.2.4",
+    "json-schema-to-typescript": "^10.1.5",
+    "nodemon": "^2.0.14",
+    "nyc": "^15.1.0",
+    "pkg-dir": "^5",
+    "sinon": "^11.1.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2",
+    "xo": "^0.46.3"
+  },
+  "xo": {
+    "extends": [
+      "eslint-config-xo-overrides"
+    ],
+    "ignore": "lib/*",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "new-cap": "off",
+      "unicorn/no-abusive-eslint-disable": "off",
+      "@typescript-eslint/object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "@typescript-eslint/comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "@typescript-eslint/consistent-type-imports": "error"
+    }
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "lib/"
+      },
+      "compile": "tsc"
+    }
+  }
+}
